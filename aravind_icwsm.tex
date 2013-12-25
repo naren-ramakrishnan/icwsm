@@ -5,13 +5,27 @@
 \usepackage{helvet}
 \usepackage{courier}
 
-%packages I used
+%--------packages I used----------------------------
 \usepackage{verbatim}
 \usepackage{latexsym}
 \usepackage{amsmath, amsfonts, amssymb}
 \usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subfig}
 \usepackage{url}
+\usepackage{color}
+\newcommand{\aravind}[1]{[{\color{blue}\textit{Aravind}\textit{: #1}}]}
+\newcommand{\naren}[1]{[{\color{red}\textit{Naren}\textit{: #1}}]}
+\newcommand{\TODO}[2]{{\color{magenta}[\textbf{TODO:} #2 \\ \textbf{Assignee:} #1]}}
 
+
+% symbols and stuff from Bert's paper
+\newcommand{\then}{\Rightarrow}
+\newcommand{\softor}{\operatornamewithlimits{\tilde{\vee}}}
+\newcommand{\softand}{\operatornamewithlimits{\tilde{\wedge}}}
+\newcommand{\softthen}{\operatornamewithlimits{\tilde{\then}}}
+\newcommand{\softneg}{\operatornamewithlimits{\tilde{\neg}}}
+%--------------------------------------------------------
 \frenchspacing
 \setlength{\pdfpagewidth}{8.5in}
 \setlength{\pdfpageheight}{11in}
@@ -20,66 +34,32 @@
 /Author (Aravindan Mahendiran, Naren Ramakrishnan, Bert Huang, Lise Getoor)}
 \setcounter{secnumdepth}{0}  
 
-% stuff copied from Bert's paper
-\newcommand{\then}{\Rightarrow}
-\newcommand{\softor}{\operatornamewithlimits{\tilde{\vee}}}
-\newcommand{\softand}{\operatornamewithlimits{\tilde{\wedge}}}
-\newcommand{\softthen}{\operatornamewithlimits{\tilde{\then}}}
-\newcommand{\softneg}{\operatornamewithlimits{\tilde{\neg}}}
-
-\def\RVs{\mathbf{X}}
-\def\RV{{X}}
-\def\rvpt{{\mathbf{x}}}
-\def\reals{{\mathbb{R}}}
-\def\extReals{{\mathbb{R}^{\infty}}}
-\def\potentials{{\phi}}
-\def\potential{{\phi}}
-\def\prob{{\mathbb{P}}}
-\def\density{{f}}
-\def\psl{{PSL}}
-\def\Cineq{{B}}
-\def\Ceq{{A}}
-\def\bineq{{b}}
-\def\beq{{a}}
-\def\domain{{\mathbf{D}}}
-\def\kineq{{k_B}}
-\def\keq{{k_A}}
-
 \begin{document}
-\title{Automated Vocabulary Creation For Elections}
-\author{{\bf Aravindan Mahendiran}$^{1}$, {\bf Naren Ramakrishnan}$^{1}$, 
-             {\bf Bert Huang}$^{2}$, {\bf Lise Getoor}$^{2}$\\
-              $^1$Virginia Tech.,$^2$University of Maryland}
+\title{Automated Social Group Modeling for Characterizing and Forecasting Elections}
+\author{{\bf Aravindan Mahendiran}$^{1}$, {\bf Bert Huang}$^{2}$,\\
+			  {\bf Lise Getoor}$^{2}$, {\bf Naren Ramakrishnan}$^{1}$,\\
+			  {\bf Jaime Arredondo Sanchez Lira}$^{3}$, {\bf David Mares}$^{3}$,\\
+              $^1$Virginia Tech.,$^2$University of Maryland,$^3$University of California, San Diego}
 \maketitle
+\TODO{Aravind}{Get Jaime, Mares publication Names}\\
 \input{tex_files/Abstract}
 \input{tex_files/Introduction}
-
-% word growth figure
-\begin{figure*}[Ht]
-	\centering
-	%\captionsetup{font=scriptsize}
-	\includegraphics[width=0.7\textwidth, height=0.3\textheight]{support_files/WordGrowth.png}
-	\vspace{-1em}
-	\caption{Word growth over time}
-	\label{fig:wordgrowth}
-	\vspace{-1em}
-\end{figure*}
-
 \input{tex_files/Methodology}
 \begin{figure*}[Ht]
 	\centering
 	%\captionsetup{font=scriptsize}
 	\includegraphics[width=0.7\textwidth, height=0.3\textheight]{support_files/Recall.png}
 \vspace{-1em}
-	\caption{Recall of seed vocabulary vs PSL vocabulary}
+	\caption{Performance improvement in the number of documents related to elections tracked.}
 	\label{fig:recall}
 	\vspace{-1em}
 \end{figure*}
 
 \input{tex_files/Results}
 \linebreak
+\linebreak
 \textbf{Acknowledgments}
-This work is supported in part by the National Science Foundation under Grant No. 0937094 and the Intelligence Advanced Research Projects Activity (IARPA) via Department of Interior National Business Center (DoI/NBC) contract number D12PC00337. The U.S. Government is authorized to reproduce and distribute reprints for Governmental purposes notwithstanding any copyright annotation thereon. Disclaimer: The views and conclusions contained herein are those of the authors and should not be interpreted as necessarily representing the official policies or endorse- ments, either expressed or implied, of IARPA, DOI/NBA, or the U.S. Government.
+This work is supported in part by the National Science Foundation under Grant No. 0937094 and the Intelligence Advanced Research Projects Activity (IARPA) via Department of Interior National Business Center (DoI/NBC) contract number D12PC00337. The U.S. Government is authorized to reproduce and distribute reprints for Governmental purposes notwithstanding any copyright annotation thereon. Disclaimer: The views and conclusions contained herein are those of the authors and should not be interpreted as necessarily representing the official policies or endorsements, either expressed or implied, of IARPA, DOI/NBA, or the U.S. Government.
 \linebreak
 \linebreak
 \linebreak
