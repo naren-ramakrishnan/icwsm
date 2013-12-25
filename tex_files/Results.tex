@@ -1,0 +1,32 @@
+\section{RESULTS}
+To evaluvate our hypothesis we test our models on different elections from Latin America.
+The tweets are provided by DataSift, an infoveilence service that resells Twitter data.
+On an average we collect close to 2 million unique tweets a day from over 21 countries in Latin and South America.
+Then these tweets are geo-coded using a geo-location algorithm we developed to obtain tweets from the country of interest.
+We then run the two prediction algorithms to get their baseline perfermance.
+These two models have been tested extensively on 36 elections from Latin America from 2012-2013 including Presidential, Governor and Mayoral elections. 
+Out of these 36 elections, the models predicted 21 of them correctly. 
+%The combined track record for the two elections have been detailed in \ref{table:trackRecord}. 
+Importantly every single election was predicted ahead of time and not in reterospect.
+The models perform poorly on local mayoral elections(12 out of 24 predicted correctly) as there was not much chatter on Twitter about these elections to make sound predictions. 
+The regression model was used only for presidential elections as opinion polls were not available for Governor and Mayoral elections.
+Hence we use only the presidential elections to evaluavate our vocabulary.
+Once we have the baseline score for these models, we then use the same vocabulary to seed our PSL learning algorithm. 
+The prediction algorithms are then run again, now by using the expanded vocabulary obtained through the query expansion at each iteration.
+
+Figure \ref{fig:recall} shows the increase in the number of documents that were used by the algorithm to make a prediciton.
+It is noticed when averaged across all the 8 elections we have close to a 2x increase in the number of tweets that were used by these models.
+This is a substantial increase in the recall of relevant tweets for the domain.
+To further illustrate the fact that the vocabulary used by such algorithms plays a vital role, we compare the performance of the models using the two different vocabularies.
+The Mean Absolute Percentage Error (MAPE) was used as a metric to measure the performance of the models. 
+To reduce the effect of outliers we track the popularity of only the major candidates and ignore the ones who obtained less than 10\% of the total votes.
+Table \ref{table:improvement} shows the performance of each vocabulary in different elections. 
+On an average it is seen that the mean absolute percentage error is reduced by 15.58\%.
+\section{CONCLUSIONS AND FUTURE WORK}
+In this work we built a novel query expansion methodology using Probabilistic Soft Logic.
+We showed how such a vocabulary has a direct impact on the recall of documents and the accuracy of prediction algorithms.
+%Specifically we were on an average able to reduce the MAPE error of election prediction algorithms by 15.58\%.
+It is important to note that though we used elections to show performance gains, the query expansion system is generic and can be used to learn a vocabulary for any given domain.
+Furhter, this work is motivated towards a future goal to model the electorate demographics.
+With more fine grained data about the gender, age and exact location of a user it is possible to infer the preferences at a group level rather than at a user level.
+This would enable us to study the various interactions between groups and individual users in more detail and thus make more informed election predictions.

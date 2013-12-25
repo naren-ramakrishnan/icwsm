@@ -1,0 +1,49 @@
+This is BibTeX, Version 0.99d (TeX Live 2013)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: aravind_icwsm.aux
+The style file: AuthorKit/aaai.bst
+Database file #1: references.bib
+Warning--empty journal in bach2010decision
+Warning--empty journal in bermingham2011using
+You've used 25 entries,
+            2568 wiz_defined-function locations,
+            687 strings with 9438 characters,
+and the built_in function-call counts, 11111 in all, are:
+= -- 1183
+> -- 503
+< -- 10
++ -- 176
+- -- 172
+* -- 844
+:= -- 1777
+add.period$ -- 129
+call.type$ -- 25
+change.case$ -- 186
+chr.to.int$ -- 24
+cite$ -- 27
+duplicate$ -- 452
+empty$ -- 768
+format.name$ -- 214
+if$ -- 2334
+int.to.chr$ -- 2
+int.to.str$ -- 0
+missing$ -- 25
+newline$ -- 157
+num.names$ -- 75
+pop$ -- 189
+preamble$ -- 1
+purify$ -- 211
+quote$ -- 0
+skip$ -- 349
+stack$ -- 0
+substring$ -- 480
+swap$ -- 124
+text.length$ -- 10
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 200
+warning$ -- 2
+while$ -- 85
+width$ -- 28
+write$ -- 349
+(There were 2 warnings)

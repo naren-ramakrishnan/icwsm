@@ -1,0 +1,202 @@
+\begin{thebibliography}{}
+
+\bibitem[\protect\citeauthoryear{Asur and Huberman}{2010}]{asur2010predicting}
+Asur, S., and Huberman, B.~A.
+\newblock 2010.
+\newblock Predicting the future with social media.
+\newblock In {\em Web Intelligence and Intelligent Agent Technology (WI-IAT),
+  2010 IEEE/WIC/ACM International Conference on}, volume~1,  492--499.
+\newblock IEEE.
+
+\bibitem[\protect\citeauthoryear{Bach \bgroup et al\mbox.\egroup
+  }{2010}]{bach2010decision}
+Bach, S.~H.; Broecheler, M.; Kok, S.; and Getoor, L.
+\newblock 2010.
+\newblock Decision-driven models with probabilistic soft logic.
+
+\bibitem[\protect\citeauthoryear{Bach \bgroup et al\mbox.\egroup
+  }{2012}]{bach2012scaling}
+Bach, S.; Broecheler, M.; Getoor, L.; and O'leary, D.
+\newblock 2012.
+\newblock Scaling mpe inference for constrained continuous markov random fields
+  with consensus optimization.
+\newblock In {\em Advances in Neural Information Processing Systems},
+  2663--2671.
+
+\bibitem[\protect\citeauthoryear{Bermingham and
+  Smeaton}{2011}]{bermingham2011using}
+Bermingham, A., and Smeaton, A.~F.
+\newblock 2011.
+\newblock On using twitter to monitor political sentiment and predict election
+  results.
+
+\bibitem[\protect\citeauthoryear{Bollen, Mao, and
+  Pepe}{2011}]{bollen2011modeling}
+Bollen, J.; Mao, H.; and Pepe, A.
+\newblock 2011.
+\newblock Modeling public mood and emotion: Twitter sentiment and
+  socio-economic phenomena.
+\newblock In {\em ICWSM}.
+
+\bibitem[\protect\citeauthoryear{Bollen, Mao, and
+  Zeng}{2011}]{bollen2011twitter}
+Bollen, J.; Mao, H.; and Zeng, X.
+\newblock 2011.
+\newblock Twitter mood predicts the stock market.
+\newblock {\em Journal of Computational Science} 2(1):1--8.
+
+\bibitem[\protect\citeauthoryear{Brocheler, Mihalkova, and
+  Getoor}{2012}]{brocheler2012probabilistic}
+Brocheler, M.; Mihalkova, L.; and Getoor, L.
+\newblock 2012.
+\newblock Probabilistic similarity logic.
+\newblock {\em arXiv preprint arXiv:1203.3469}.
+
+\bibitem[\protect\citeauthoryear{Broecheler and
+  Getoor}{2010}]{broecheler2010computing}
+Broecheler, M., and Getoor, L.
+\newblock 2010.
+\newblock Computing marginal distributions over continuous markov networks for
+  statistical relational learning.
+\newblock In {\em Advances in Neural Information Processing Systems},
+  316--324.
+
+\bibitem[\protect\citeauthoryear{Conover \bgroup et al\mbox.\egroup
+  }{2011}]{conover2011predicting}
+Conover, M.~D.; Gon{\c{c}}alves, B.; Ratkiewicz, J.; Flammini, A.; and Menczer,
+  F.
+\newblock 2011.
+\newblock Predicting the political alignment of twitter users.
+\newblock In {\em Privacy, security, risk and trust (passat), 2011 ieee third
+  international conference on and 2011 ieee third international conference on
+  social computing (socialcom)},  192--199.
+\newblock IEEE.
+
+\bibitem[\protect\citeauthoryear{Demartini \bgroup et al\mbox.\egroup
+  }{2011}]{demartini2011analyzing}
+Demartini, G.; Siersdorfer, S.; Chelaru, S.; and Nejdl, W.
+\newblock 2011.
+\newblock Analyzing political trends in the blogosphere.
+\newblock In {\em ICWSM}.
+
+\bibitem[\protect\citeauthoryear{Diaz-Aviles, Orellana-Rodriguez, and
+  Nejdl}{2012}]{diaz2012taking}
+Diaz-Aviles, E.; Orellana-Rodriguez, C.; and Nejdl, W.
+\newblock 2012.
+\newblock Taking the pulse of political emotions in latin america based on
+  social web streams.
+\newblock In {\em Web Congress (LA-WEB), 2012 Eighth Latin American},  40--47.
+\newblock IEEE.
+
+\bibitem[\protect\citeauthoryear{Gayo-Avello, Metaxas, and
+  Mustafaraj}{2011}]{gayo2011limits}
+Gayo-Avello, D.; Metaxas, P.~T.; and Mustafaraj, E.
+\newblock 2011.
+\newblock Limits of electoral predictions using twitter.
+\newblock In {\em ICWSM}.
+
+\bibitem[\protect\citeauthoryear{Gayo-Avello}{2011}]{gayo2011don}
+Gayo-Avello, D.
+\newblock 2011.
+\newblock Don't turn social media into another'literary digest'poll.
+\newblock {\em Communications of the ACM} 54(10):121--128.
+
+\bibitem[\protect\citeauthoryear{Gayo-Avello}{2012}]{gayo2012wanted}
+Gayo-Avello, D.
+\newblock 2012.
+\newblock " i wanted to predict elections with twitter and all i got was this
+  lousy paper"--a balanced survey on election prediction using twitter data.
+\newblock {\em arXiv preprint arXiv:1204.6441}.
+
+\bibitem[\protect\citeauthoryear{Gruhl \bgroup et al\mbox.\egroup
+  }{2005}]{gruhl2005predictive}
+Gruhl, D.; Guha, R.; Kumar, R.; Novak, J.; and Tomkins, A.
+\newblock 2005.
+\newblock The predictive power of online chatter.
+\newblock In {\em Proceedings of the eleventh ACM SIGKDD international
+  conference on Knowledge discovery in data mining},  78--87.
+\newblock ACM.
+
+\bibitem[\protect\citeauthoryear{Huang \bgroup et al\mbox.\egroup
+  }{2012a}]{huang2012social}
+Huang, B.; Bach, S.~H.; Norris, E.; Pujara, J.; and Getoor, L.
+\newblock 2012a.
+\newblock Social group modeling with probabilistic soft logic.
+\newblock In {\em NIPS Workshop on Social Network and Social Media Analysis:
+  Methods, Models, and Applications}.
+
+\bibitem[\protect\citeauthoryear{Huang \bgroup et al\mbox.\egroup
+  }{2012b}]{huang2012probabilistic}
+Huang, B.; Kimmig, A.; Getoor, L.; and Golbeck, J.
+\newblock 2012b.
+\newblock Probabilistic soft logic for trust analysis in social networks.
+\newblock In {\em International Workshop on Statistical Relational AI}.
+
+\bibitem[\protect\citeauthoryear{Kimmig \bgroup et al\mbox.\egroup
+  }{2012}]{kimmig2012short}
+Kimmig, A.; Bach, S.; Broecheler, M.; Huang, B.; and Getoor, L.
+\newblock 2012.
+\newblock A short introduction to probabilistic soft logic.
+\newblock In {\em Proceedings of the NIPS Workshop on Probabilistic
+  Programming: Foundations and Applications},  1--4.
+
+\bibitem[\protect\citeauthoryear{Livne \bgroup et al\mbox.\egroup
+  }{2011}]{livne2011party}
+Livne, A.; Simmons, M.~P.; Adar, E.; and Adamic, L.~A.
+\newblock 2011.
+\newblock The party is over here: Structure and content in the 2010 election.
+\newblock In {\em ICWSM}.
+
+\bibitem[\protect\citeauthoryear{Memory \bgroup et al\mbox.\egroup
+  }{2012}]{memory2012graph}
+Memory, A.; Kimmig, A.; Bach, S.; Raschid, L.; and Getoor, L.
+\newblock 2012.
+\newblock Graph summarization in annotated data using probabilistic soft logic.
+\newblock {\em status: accepted}.
+
+\bibitem[\protect\citeauthoryear{Metaxas, Mustafaraj, and
+  Gayo-Avello}{2011}]{metaxas2011not}
+Metaxas, P.~T.; Mustafaraj, E.; and Gayo-Avello, D.
+\newblock 2011.
+\newblock How (not) to predict elections.
+\newblock In {\em Privacy, security, risk and trust (PASSAT), 2011 IEEE third
+  international conference on and 2011 IEEE third international conference on
+  social computing (SocialCom)},  165--171.
+\newblock IEEE.
+
+\bibitem[\protect\citeauthoryear{Mustafaraj \bgroup et al\mbox.\egroup
+  }{2011}]{mustafaraj2011vocal}
+Mustafaraj, E.; Finn, S.; Whitlock, C.; and Metaxas, P.~T.
+\newblock 2011.
+\newblock Vocal minority versus silent majority: Discovering the opionions of
+  the long tail.
+\newblock In {\em Privacy, security, risk and trust (passat), 2011 ieee third
+  international conference on and 2011 ieee third international conference on
+  social computing (socialcom)},  103--110.
+\newblock IEEE.
+
+\bibitem[\protect\citeauthoryear{O'Connor \bgroup et al\mbox.\egroup
+  }{2010}]{o2010tweets}
+O'Connor, B.; Balasubramanyan, R.; Routledge, B.~R.; and Smith, N.~A.
+\newblock 2010.
+\newblock From tweets to polls: Linking text sentiment to public opinion time
+  series.
+\newblock {\em ICWSM} 11:122--129.
+
+\bibitem[\protect\citeauthoryear{Saez-Trumper, Meira, and
+  Almeida}{2011}]{saez2011total}
+Saez-Trumper, D.; Meira, W.; and Almeida, V.
+\newblock 2011.
+\newblock From total hits to unique visitors model for electionâ€™s
+  forecasting.
+\newblock In {\em International Conference on Web Science}.
+
+\bibitem[\protect\citeauthoryear{Tumasjan \bgroup et al\mbox.\egroup
+  }{2010}]{tumasjan2010predicting}
+Tumasjan, A.; Sprenger, T.~O.; Sandner, P.~G.; and Welpe, I.~M.
+\newblock 2010.
+\newblock Predicting elections with twitter: What 140 characters reveal about
+  political sentiment.
+\newblock {\em ICWSM} 10:178--185.
+
+\end{thebibliography}

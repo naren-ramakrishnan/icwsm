@@ -1,0 +1,212 @@
+\section{METHODOLOGY}
+\subsection{Query Expansion}
+In most document corpora, a single concept can be referred using multiple terms.
+In information retrieval (IR) this is called \emph{synonymy} and has a huge impact on the recall of documents pertaining to the concept.
+Researchers address this problem by creating as exhaustive a query as possible. 
+But when exploring the Twitter corpora it becomes almost impossible to hand craft such a expansive query as the meme and hashTag adaptations are not known a priori. 
+\newline
+To address this issue IR experts use \emph{query expansion} or re-inforcement learning.
+These are iterative algorithms that are initialized with a small set of query terms. 
+When the documents matching the query terms are returned, after basic NLP processing such as tokenization, stop-word removal and stemming a richer vocabulary is obtained by ranking the terms in these documents by their frequency counts.
+The top n words from this list is then used to query the documents again. 
+The iterations are stopped when no new terms are added to the vocbulary. 
+We implement such an algorithm using Probabilistic Soft Logic to build our vocabulary for a given election. 
+\subsection{Query Expansion using PSL}
+In ~\cite{huang2012social}, we used PSL to model user affiliations within groups. 
+Specifically we built a PSL program for a  social network where we have a set of users, their posts, messages to other users and the various groups we want to model. 
+The rules we defined captured the dynamics of group affiliations through the various interactions.
+Through the MPE inference we classified users into different groups based on their hashtag usage and their interactions with other users.
+\newline
+In this paper we extend our earlier work to achieve what we call dynamic query expansion through PSL. 
+Similar to the query expansion methodology described earlier we start with an initial set of key words which we believe are indicative of the affinity of a particular user to a candidate contesting in the election.
+Now instead of a single inference, we iteratively perform the inference over successive time windows such that the inference from window $w_t$ is used as a prior to window $w_{t+1}$ and the inference from that is used for window $w_{t+2}$ and so on.
+In order to capture the temporal connectivity between the iterations, in addition to the adaptation of rules from ~\cite{huang2012social} we define additional rules and predicates as follows:
+\begin{align*}
+Was\_Member(A,G) \Rightarrow Is\_Memeber(A,G)
+\end{align*}
+\begin{align*}
+Belonged(W,G) \Rightarrow Belongs(W,G)
+\end{align*}
+Here the predicates $Was\_Member$ and $Belonged$ are inferences from the previous time window and are loaded in as  prior to the current iteration.
+These rules are weighted slightly lower than the recursive rules below so that the system overcomes the bias it had learnt in light of new more convincing evidence.
+This way hashtags that are more indicative of a user's affiliation move up in the ranking for every successive iteration and the hashtags that aren't move down.
+A similar phenomenon occurs with the user-candidate affiliations too.
+Below we outline the recursive PSL rules that grows the hashtag preferences and the user affiliations. 
+\begin{align*}
+\begin{split}
+Tweeted(A,T) 
+	\softand Contains(T,W)
+	\softand Belongs(W,G) \\ 
+	\softand Positive(T)
+	\Rightarrow Is\_Member(A,G)
+\end{split}
+\end{align*}
+
+\begin{align*}
+\begin{split}
+Tweeted(A,T)
+	 \softand Contains(T,W)
+	\softand Belongs(W,G)\\
+	 \softand Negative(T)
+	\Rightarrow \sim Is\_Member(A,G)
+\end{split}
+\end{align*}
+
+\begin{align*}
+\begin{split}
+Is\_Member(A,G)
+	 \softand Tweeted(A,T)
+	\softand Contains(T,W)\\
+	 \softand Positive(T) 
+	\Rightarrow Belongs(W,G)
+\end{split}
+\end{align*}
+
+\begin{align*}
+\begin{split}
+Is\_Member(A,G) 
+	\softand Tweeted(A,T)
+	\softand Contains(T,W)\\
+	\softand Negative(T)
+	\Rightarrow \sim Belongs(W,G)
+\end{split}
+\end{align*}
+
+\begin{align*}
+\begin{split}
+Contains(T,W1)
+ \softand Contains(T,W2)
+  \softand Belonged(W1,G)\\ 
+  \softand Positive(T)
+	\Rightarrow Belongs(W2,G)
+\end{split}
+\end{align*}
+
+\begin{align*}
+\begin{split}
+Contains(T,W1) 
+	\softand Contains(T,W2)
+	\softand Belonged(W1,G)\\ 
+	\softand Negative(T)
+	\Rightarrow \sim Belongs(W2,G)
+\end{split}
+\end{align*}
+
+Here $Positive$ and $Negative$ are predicates whose truth values are calculated from the sentiment of the tweet such that the highly positive tweets get a truth value closer to $1.0$ for the predicate $Positive$. 
+Since PSL works under the close world assumption, we do not need to specify the groundings that are false.
+For tweets that do not have a positive or negative orientation we assign a truth value of $0.5$ for both the $Positive$ and $Negative$ predicates.
+The last two rules are added to encode the belief that hashtags occuring together are expected to be about the same group.
+%\paragraph{}
+For every iteration, we collect tweets from the country of interest that was created within the time window and filter the tweets that contain any hashtag from the previous inference  or that has been authored by or directed at a user whose affiliation is already known from the previous iterations.
+%track record table
+\begin{table*}[Ht]
+	\centering
+	\begin{tabular}{| r || r | r | r | r | r | r |}
+ 	\hline
+ 	Election & UniVis+Seed & UniVis+PSL & Improv. & Reg+Seed & Reg.+PSL & Improv\\
+ 	\hline
+	Mexico & 0.353 & 0.368 & -4.2\% & 0.123 & 0.07 & 43.09\% \\ 	
+ 	Venezuela\_Oct7 & 0.069	& 0.077 & -11.59\% & 0.158 & 0.109 & 31.01\&\\
+	Ecuador & 0.531 & 0.547 & -3.01\% & 0.263 & 0.244 & 7.22\% \\
+	Venezuela\_Apr15 & 0.198 & 0.178 & 10.10\% & 0.142 & 0.112 & 21.126\&\\
+	Paraguay & 0.34 & 0.288 & 15.29\% & 0.2 & 0.18 & 10\% \\
+	Chile\_Nov17 & 0.56 & 0.42 & 25\% & 0.245 & 0.207 & 15.51\% \\
+	Honduras & 0.563 & 0.527 & 6.39\% & 0.293 & 0.184 & 37.20\% \\
+	Chile\_Dec17 & 0.096 & 0.061 & 36.45\% & 0.409 & 0.369 & 9.77\% \\
+ 	\hline
+	\end{tabular}
+	\vspace{-0.5em}
+	\caption{Performance of models with different vocabs measures using Mean Absolute Percentage Error}
+	\label{table:improvement}
+	\vspace{-0.5em}
+\end{table*}	
+\begin{comment}
+\begin{table*}[Ht]
+	\centering
+	\begin{tabular}{| l | l | l | l |}
+	\hline
+	Election Type & Number of Elections & Number of Correct Predictions & Accuracy\\
+	\hline
+	President/Prime Minister & 8 & 7 & 87.5\%\\
+	Governor & 4 & 3 & 75\%\\
+	Mayor & 24 & 12 & 50\%\\
+	Overall & 36 & 22 & 61.1\%\\
+	\hline
+	\end{tabular}
+	\vspace{-0.5em}
+	\caption{Track Record of Prediction Algorithms}
+	\label{table:trackRecord}
+	\vspace{-0.5em}
+\end{table*}
+\end{comment}
+We believe this helps us start with as little bias as possible and improve our learning with every time window.
+From various experiments conducted we noticed that we get best results for a window size of 3 days. 
+We begin this iterative approach by tracking tweets from 1 month prior to the election and thereby hoping to capture the changing trends in the use of hashTags.
+At the end of each iteration we are get each hashtag's probability of belonging to a particular candidate's vocabulary. 
+We normalize the each hashtag's weight over all previous time windows so that we identify hashtags that have remained indicative of a user's affiliation for the longest period of time without dropping in importance. 
+We then use the top hashtags ranked according to their normalized weights  for the next iteration.
+This normalization reduces the influx of hashtags that are in vogue only for a specific time window and are not as indicative of user affiliation for the entire time period. 
+Figure\ref{fig:wordgrowth} shows the growth of the vocabulary with every iteration for the Venezuelan presidential election in 2012.
+Figure\ref{fig:caprilesWordCloud} shows a word cloud of hashtags which the system identified for Henrique Capriles.
+It is interesting to note that hashtags like 'capriles' which was part of the initial seed vocabulary is ranked much lower than hashtags.
+
+\subsection{Prediction Models}
+In this section we review two prediction models we adapted from current literature to test our hypothesis. 
+The first one is a naive model that forecasts elections based on the counts of mentions of a candidate.
+We dub this as  \emph{"unique visitor model"} and is adapted from \cite{saez2011total} and \cite{tumasjan2010predicting}.
+The second model uses a regression fit to regress from tweet features to opinion polls and then predicts election. 
+This we dub as the \emph{"regression model"} and is adapted from \cite{bermingham2011using} and \cite{o2010tweets}.
+
+\subsection{Unique Visitor Model}
+Without any loss of genrerality, it can be assumed that large parties that are more popular will have a larger social media foot print than smaller and less popular parties. 
+This model takes advantage of this assumption and predicts elections by calculating the relative popularity of candidates contesting the election.
+We first define a vocabulary for each candidate. 
+This vocabulary is crafted by hand and includes the candidate's names and aliases, the name and acronyms for his/her political party and the official Twitter handle of the candidate.
+For the given time period, the tweets from the country in question are tracked for the occurance of the terms in the vocabulary.
+We then build a time series of sentiment and klout scores from the tweets returned.
+Klout score is a value provided by Klout.com that quantifies the impact each user has on social media. 
+We use the sentiment scores provided as a part of the meta-data of the tweet. 
+%The sentiment scores typically fall in the range of $[-15,15]$ and is provided by Lexalytics - a pioneer in linguistic processing.
+Once a time series of the klout and sentiment scores are built, we calculate the absolute populatrity of a candidate $C_d$ as:
+\begin{equation}
+{C_d} = \sum_i K_i * UCS_{id}
+\end{equation}
+where $K_i$ is the klout score for user $i$, and $UCS_{id}$ is User Candidate Score, the average of sentiment scores for all tweets from user $i$ about candidate $d$.
+We then normalize the popularity scores across all candidates so that they sum to $1$.
+This gives us the relative popularity of each candidate $P_d$ using which we predict the elections.
+\begin{equation}
+{P_d} = \sum_i \frac{C_d}{C_i}
+\end{equation}
+From the above equations, it is noticable that each user contributes only once to the popularity score of a candidate.
+This was preferred to merely counting the mentions of a candidate since we wanted to remove the bias of bot generated tweets from election campaigns that boosted the number of times a candidate is mentioned on Twitter.
+
+\subsection{Regression Model}
+In this model, in addition to Twitter data, we leverage the opinion polls available for the elections to make our predictions.
+Like the earlier model we track the tweets that contain a word from the vocabulary defined for each candidate.
+We then define a linear regression fit that uses the opinion polls as dependent variable and features generated from these tweets as independent variable.
+We use a total of 6 features based on klout scores, number of unique users, total number of mentions, sentiment and incumbency.
+We normalize each of these features across all candidates to get the relative share of the volume. 
+For example for the we define share of positive mentions($SoPM$)  as: 
+\begin{equation}
+SoPM(x) = \frac{\#PositiveMentions(x)}{\sum_i \#PositiveMentions(i)} 
+\end{equation}
+and share of negative users($SoNU$) as:
+\begin{equation}
+SoNU(x) = \frac{\sum_j K_j}{\sum_i \sum_j K_j}
+\end{equation}
+where $K_j$ is the klout score of user $j$ who tweeted about a candidate.
+Similarly we define share of sentiment ($SoS$) as the sum of all sentiment scores normalized across all candidares. 
+We use a binary variable for incumbency. 
+We then build a timeline of opinion polls. 
+For each of the polling dates we calculate these features by using tweets created during the 10 day window leading up to the polling date.
+When we have more than one polling hosue publishing its opinion poll for the same date we take the average of the polls. 
+Once we create a feature set for all the polling dates, we fit a simple least square regression as :
+\begin{equation}
+\begin{split}
+Popularity(x) = \alpha_1 * SoPM(x) + \alpha_2 * SoNM(x) \\
+						 + \beta_1 * SoPU(x) + \beta_2 * SoNU(x) \\
+						 + \gamma * SoS(x) + \delta * Incumbency(x) + \epsilon
+\end{split}
+\end{equation}
+From the  weights learnt from the regression fit we confirm that the sentiment and number of unique users have more predictive power than the number of mentions.	
+After learning the regression fit, we make a prediction by building such features using the same 10 day window leading up to the prediction date.
